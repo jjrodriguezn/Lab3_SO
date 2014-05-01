@@ -4,23 +4,29 @@ import akka.actor.UntypedActor;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
 
-class UserListener extends UntypedActor
+public class UserListener //extends UntypedActor
 {
 
-	LoggingAdapter log = Logging.getLogger(getContext().system(), this);
+//	LoggingAdapter log = Logging.getLogger(getContext().system(), this);
+//
+//	@Override
+//	public void onReceive(Object message) throws Exception 
+//	{
+//		while(modify.size() > 0)
+//		{
+//			//System.out.println("Hey "+modify.get(0));
+//			Banco.modifyBalance(modify.get(0));
+//			modify.remove(0);
+//		}
+//	}	
 
-	@Override
-	public void onReceive(Object message) throws Exception 
+	public static void sumEverything() 
 	{
-		sumStuff = (boolean)message; 
-		while(sumStuff)
+		while(modify.size() > 0)
 		{
-			if(modify.size() > 0)
-			{
-				System.out.println("Hey "+modify.get(0));
-				Banco.modifyBalance(modify.get(0));
-				modify.remove(0);
-			}
+			//System.out.println("Hey "+modify.get(0));
+			Banco.modifyBalance(modify.get(0));
+			modify.remove(0);
 		}
 	}	
 	

@@ -8,6 +8,7 @@ import akka.actor.Props;
 
 public class Banco {
 
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) 
 	{
 
@@ -15,7 +16,7 @@ public class Banco {
 		try 
 	        {
 			tryed++;
-			BufferedReader bufferRead = new BufferedReader(new FileReader("C:\\Users\\DELMIA\\Downloads\\SO.txt"));
+			BufferedReader bufferRead = new BufferedReader(new FileReader("C:\\Users\\Angel\\Downloads\\SO.txt"));
 			StringBuilder sb = new StringBuilder();
 	        String line = bufferRead.readLine();
 	        ArrayList<String> lines = new ArrayList<String>();
@@ -48,7 +49,8 @@ public class Banco {
 				transBla.add(aux);
 				numBla--;
 			}
-
+//			System.out.print("EEben mooooaaar Staaaaaaf");
+			
 			/*Scanner scan = new Scanner(System.in);
 			Integer numAnt = scan.nextInt();
 			Integer numBla = scan.nextInt();
@@ -69,20 +71,24 @@ public class Banco {
 //			System.out.println("Zaaa baransuuuu " + bankBalance);
 
 			ActorSystem system=ActorSystem.create("Hola");
+			//ActorSystem listen =ActorSystem.create("Jou");
 			//Props p1 = Props.create(HelloActor.class);
-			ActorRef helloActor = system.actorOf(Props.create(BankUser.class), "holi");
-			ActorRef helloActor2 = system.actorOf(Props.create(BankUser.class), "Jo!");
-			ActorRef helloListener = system.actorOf(Props.create(UserListener.class), "Jojo!");
-			
-			helloListener.tell(true, null);
-			helloActor.tell(transAnt,null);
-			helloActor2.tell(transBla,null);
-
-			helloListener.tell(false, null);
-			
-//			System.out.println(baransuu);
+			ActorRef ant = system.actorOf(Props.create(BankUser.class), "Antonio");
+			ActorRef blak = system.actorOf(Props.create(BankUser.class), "Blanca");
+			//ActorRef helloListener = listen.actorOf(Props.create(UserListener.class), "Listener");
+		
+			ant.tell(transAnt,null);
+			blak.tell(transBla,null);
+//			System.out.print("Moaaaar Staaaaaaf");
+//			
+//			while(!ant.isTerminated() && !blak.isTerminated())
+//				System.out.print("Staaaaaaf");
+//			helloListener.tell("FORWARD WITH THE GOAT!(a.k.a. \"Vooruit met de geit\" in Dutch)", null);
+			Thread.sleep(2000);
 			system.shutdown();
 			system.awaitTermination();//JOIN
+			UserListener.sumEverything();
+			//System.out.println(baransuu);
 		} 
 		catch (Exception e) 
 		{

@@ -12,15 +12,16 @@ class BankUser extends UntypedActor
 	@Override
 	public void onReceive(Object message) throws Exception 
 	{
+		int total = 0;
 		ArrayList<Integer> orders = (ArrayList<Integer>)message;
         for(int variableInFor = 0; variableInFor < orders.size(); variableInFor++)
         {
-        	UserListener.addStuff(orders.get(variableInFor));
+        	total+=(orders.get(variableInFor));
 //        	int temp = Banco.bankBalance;
 //        	temp = temp + operations.get(variableInFor);
 //        	Banco.bankBalance = temp;
 //        	Banco.signal();
         }
-
+        UserListener.addStuff(total);
 	}	
 }
