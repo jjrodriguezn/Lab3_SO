@@ -1,0 +1,82 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+
+
+public class Banco_U {
+
+    
+    public static void main(String[] args) {
+       
+        ActorSystem system=ActorSystem.create("Hola");
+        ActorRef helloActor = system.actorOf(Props.create(BankUser.class), "holi");
+	ActorRef helloActor2 = system.actorOf(Props.create(BankUser.class), "Jo!");
+	ActorRef helloListener = system.actorOf(Props.create(UserListener.class), "Jojo!");
+        while(true){
+        do{
+        System.out.println("correcto");
+            total=0;
+        try 
+	        {
+			contador++;
+			BufferedReader bufferRead = new BufferedReader(new FileReader("C:\\Users\\JHONATTAN\\Desktop\\punto1.txt"));
+			StringBuilder sb = new StringBuilder();
+	        String line = bufferRead.readLine();
+	        ArrayList<String> lines = new ArrayList<String>();
+	        while (line != null) 
+	        {
+	            lines.add(line);
+	            sb.append(line);
+	            sb.append(System.lineSeparator());
+	            line = bufferRead.readLine();
+	        }
+	        String everything = sb.toString();
+	        
+			Integer numAnt = Integer.parseInt(lines.get(0));
+			lines.remove(0);
+        		Integer numBla = Integer.parseInt(lines.get(1));
+			lines.remove(0);
+			ArrayList<Integer> transaAnt = new ArrayList<>();
+			ArrayList<Integer> transaBla = new ArrayList<>();
+			while(numAnt>0)
+			{
+				Integer aux = Integer.parseInt(lines.get(0));
+                                helloActor.tell(numAnt,null);
+				lines.remove(0);
+				transaAnt.add(aux);
+				numAnt--;
+			}
+			while(numBla>0)
+			{
+				Integer aux = Integer.parseInt(lines.get(0));
+				helloActor2.tell(numBla,null);
+                                lines.remove(0);
+				transaBla.add(aux);
+				numBla--;
+			}
+
+			helloListener.tell(true, null);
+			helloActor.tell(transaAnt,null);
+			helloActor2.tell(transaBla,null);
+			helloListener.tell(false, null);
+			system.shutdown();
+			system.awaitTermination();//JOIN
+		} 
+		catch (Exception e) 
+		{
+			System.out.println("Stuf happened, bad stuff");
+			//e.printStackTrace();
+		}
+            
+            
+        }while(total == 42);
+        catched++;
+        System.out.println("error en la suma");
+        }
+        
+    }
+    private static int total=0;
+    private static int contador=0;
+    private static int catched = 0;
+    static ActorRef helloListener;
+}
