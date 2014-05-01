@@ -16,7 +16,7 @@ public class Banco {
 		try 
 	        {
 			tryed++;
-			BufferedReader bufferRead = new BufferedReader(new FileReader("C:\\Users\\Angel\\Downloads\\SO.txt"));
+		/*	BufferedReader bufferRead = new BufferedReader(new FileReader("C:\\Users\\Angel\\Downloads\\SO.txt"));
 			StringBuilder sb = new StringBuilder();
 	        String line = bufferRead.readLine();
 	        ArrayList<String> lines = new ArrayList<String>();
@@ -49,9 +49,10 @@ public class Banco {
 				transBla.add(aux);
 				numBla--;
 			}
+			*/
 //			System.out.print("EEben mooooaaar Staaaaaaf");
 			
-			/*Scanner scan = new Scanner(System.in);
+			Scanner scan = new Scanner(System.in);
 			Integer numAnt = scan.nextInt();
 			Integer numBla = scan.nextInt();
 			ArrayList<Integer> transAnt = new ArrayList<>();
@@ -67,7 +68,7 @@ public class Banco {
 				int aux = scan.nextInt();
 				transBla.add(aux);
 				numBla--;
-			}*/
+			}
 //			System.out.println("Zaaa baransuuuu " + bankBalance);
 
 			ActorSystem system=ActorSystem.create("Hola");
