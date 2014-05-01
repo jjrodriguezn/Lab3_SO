@@ -85,7 +85,7 @@ public class Banco {
 //			while(!ant.isTerminated() && !blak.isTerminated())
 //				System.out.print("Staaaaaaf");
 //			helloListener.tell("FORWARD WITH THE GOAT!(a.k.a. \"Vooruit met de geit\" in Dutch)", null);
-			Thread.sleep(2000);
+		//	Thread.sleep(2000);
 			system.shutdown();
 			system.awaitTermination();//JOIN
 			UserListener.sumEverything();
